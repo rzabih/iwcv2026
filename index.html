@@ -4,40 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>8th International Workshop on Computer Vision - IWCV 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #004a99;
-            --accent-red: #c0392b;
-            --light-bg: #f4f7f6;
-            --text-dark: #333;
+            --primary: #0f172a;
+            --accent: #e11d48;
+            --secondary: #334155;
+            --light-blue: #f8fafc;
+            --border: #e2e8f0;
+            --text-main: #1e293b;
         }
 
+        * { box-sizing: border-box; }
+
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             margin: 0;
-            padding: 0;
-            color: var(--text-dark);
+            color: var(--text-main);
             background-color: #fff;
             scroll-behavior: smooth;
         }
 
+        /* --- Header & Nav --- */
         header {
-            background: #fff;
-            border-bottom: 3px solid var(--primary-blue);
-            padding: 20px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .container {
-            width: 85%;
-            max-width: 1100px;
+            width: 90%;
+            max-width: 1200px;
             margin: auto;
-            overflow: hidden;
         }
 
         nav {
@@ -47,166 +50,164 @@
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--primary-blue);
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            padding: 0 15px;
+            gap: 25px;
+            align-items: center;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            transition: color 0.3s;
+            color: var(--secondary);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.2s;
         }
 
-        nav ul li a:hover {
-            color: var(--accent-red);
+        nav ul li a:hover { color: var(--accent); }
+
+        .nav-btn {
+            background: var(--primary);
+            color: #fff !important;
+            padding: 8px 18px;
+            border-radius: 6px;
         }
 
+        /* --- Hero Section --- */
         .hero {
-            background: linear-gradient(rgba(0, 74, 153, 0.7), rgba(0, 74, 153, 0.7)), 
-                        url('https://images.unsplash.com/photo-1590059530472-358045768846?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1590059530472-358045768846?auto=format&fit=crop&q=80&w=1600') center/cover;
             color: #fff;
-            padding: 120px 0;
+            padding: 160px 0;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            opacity: 0.9;
             font-weight: 300;
         }
 
-        section {
-            padding: 80px 0;
-        }
+        /* --- Shared Components --- */
+        section { padding: 100px 0; }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .section-title h2 {
-            font-size: 2.2rem;
-            color: var(--primary-blue);
-            text-transform: uppercase;
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 800;
             position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
         }
 
         .section-title h2::after {
             content: '';
-            width: 60px;
+            display: block;
+            width: 40px;
             height: 4px;
-            background: var(--accent-red);
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
+            background: var(--accent);
+            margin-top: 10px;
         }
 
+        /* --- Cards & Content --- */
         .content-box {
-            background: var(--light-bg);
-            padding: 40px;
-            border-left: 8px solid var(--primary-blue);
-            border-radius: 4px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background: var(--light-blue);
+            padding: 50px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
 
-        .organizers {
+        .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            text-align: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        .organizer-card {
+        .card {
             background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
         }
 
-        .organizer-card:hover {
+        .card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             transform: translateY(-5px);
         }
 
-        .organizer-card h3 {
-            margin-bottom: 10px;
-            color: var(--accent-red);
+        .card h3 {
+            margin: 0 0 5px 0;
+            color: var(--primary);
+            font-size: 1.1rem;
         }
 
+        .card p {
+            margin: 0;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* --- Program & Info --- */
         .info-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
 
         .info-card h3 {
-            color: var(--primary-blue);
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-        }
-
-        footer {
-            background: #1a1a1a;
-            color: #bdc3c7;
-            padding: 60px 0 20px;
-            font-size: 0.9rem;
-        }
-
-        footer h4 {
-            color: #fff;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 15px;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        footer ul {
+        .speaker-list {
             list-style: none;
             padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
 
-        footer ul li {
-            margin-bottom: 12px;
+        .speaker-list li {
+            padding: 5px 0;
+            font-weight: 500;
         }
 
-        footer a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s;
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            color: #94a3b8;
+            padding: 80px 0 40px;
         }
 
-        footer a:hover {
-            color: #fff;
-        }
+        footer h4 { color: #fff; margin-bottom: 20px; }
+
+        footer a { color: #cbd5e1; text-decoration: none; }
 
         @media (max-width: 768px) {
-            .info-grid { grid-template-columns: 1fr; }
-            nav { flex-direction: column; }
-            nav ul { margin-top: 20px; flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 2rem; }
+            nav ul { display: none; } /* Simplified for demo */
+            .hero { padding: 100px 0; }
+            .speaker-list { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -221,8 +222,7 @@
                     <li><a href="#committee">Committee</a></li>
                     <li><a href="#program">Program</a></li>
                     <li><a href="#venue">Venue</a></li>
-                    <li><a href="#travel">Travel</a></li>
-                    <li><a href="#registration">Registration</a></li>
+                    <li><a href="#registration" class="nav-btn">Register</a></li>
                 </ul>
             </nav>
         </div>
@@ -230,91 +230,89 @@
 
     <div class="hero">
         <div class="container">
-            <h1>8th International Workshop on Computer Vision</h1>
+            <h1>8th International Workshop <br>on Computer Vision</h1>
             <p>Stresa, Lake Maggiore, Italy &bull; May 26 – 28, 2026</p>
         </div>
     </div>
 
     <section id="about">
         <div class="container">
-            <div class="section-title">
-                <h2>About the Workshop</h2>
-            </div>
-            <div class="content-box">
-                <p>The <strong>8th International Workshop on Computer Vision</strong> brings together leading minds in AI and vision research. This exclusive event focuses on high-quality invited talks, interactive panels, and the exploration of frontier themes in computer vision.</p>
-                <p>To foster open dialogue and the sharing of work-in-progress, <strong>there are no formal published proceedings</strong>. For 2026, we are happy to host the workshop in the historic lakeside town of <strong>Stresa</strong>, Italy.</p>
+            <div class="info-grid">
+                <div>
+                    <div class="section-title"><h2>About the Workshop</h2></div>
+                    <p>The <strong>8th International Workshop on Computer Vision</strong> brings together leading minds in AI and vision research. This exclusive event focuses on high-quality invited talks, interactive panels, and the exploration of frontier themes in computer vision.</p>
+                    <p>To foster open dialogue and the sharing of work-in-progress, <strong>there are no formal published proceedings</strong>.</p>
+                </div>
+                <div class="content-box">
+                    <h3 style="margin-top:0">Location</h3>
+                    <p>For 2026, we are happy to host the workshop in the historic lakeside town of <strong>Stresa, Italy</strong>.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="committee" style="background: var(--light-bg);">
+    <section id="committee" style="background: var(--light-blue);">
         <div class="container">
-            <div class="section-title">
-                <h2>Scientific Organizers</h2>
-            </div>
-            <div class="organizers">
-                <div class="organizer-card">
+            <div class="section-title"><h2>Scientific Organizers</h2></div>
+            <div class="grid-3">
+                <div class="card">
                     <h3>Gérard Medioni</h3>
                     <p>Amazon</p>
                 </div>
-                <div class="organizer-card">
+                <div class="card">
                     <h3>Ramin Zabih</h3>
                     <p>Cornell Tech / Google Research</p>
-                </div>         
-        </div>
-         <div class="container">
-            <div class="section-title">
-                <h2>Local Organizers</h2>
+                </div>
             </div>
-            <div class="organizers">              
-                <div class="organizer-card">
+
+            <div class="section-title" style="margin-top: 60px;"><h2>Local Organizers</h2></div>
+            <div class="grid-3">
+                <div class="card">
                     <h3>Federica Arrigoni</h3>
                     <p>Politecnico di Milano</p>
                 </div>
-                <div class="organizer-card">
+                <div class="card">
                     <h3>Chiara Plizzari</h3>
                     <p>Bocconi University, Milan</p>
-                </div>    
+                </div>
             </div>
         </div>
     </section>
 
-     <section id="program">
+    <section id="program">
         <div class="container">
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>Program (tentative speakers/panelists):</h3>
-<ul>
-    <li>Michael Black</li>
-    <li>Irfan Essa</li>
-    <li>Bill Freeman</li>
-    <li>Gerard Medioni</li>
-    <li>Björn Ommer</li>
-    <li>David Salesin</li>
-    <li>Noah Snavely</li>
-    <li>Luc Vincent</li>
-    <li>Ramin Zabih</li>
-</ul>
-                </div>
+            <div class="info-card">
+                <h3>Tentative Speakers & Panelists</h3>
+                <ul class="speaker-list">
+                    <li>Michael Black</li>
+                    <li>Irfan Essa</li>
+                    <li>Bill Freeman</li>
+                    <li>Gerard Medioni</li>
+                    <li>Björn Ommer</li>
+                    <li>David Salesin</li>
+                    <li>Noah Snavely</li>
+                    <li>Luc Vincent</li>
+                    <li>Ramin Zabih</li>
+                </ul>
             </div>
         </div>
     </section>
     
-    <section id="venue">
+    <section id="venue" style="background: var(--light-blue); border-top: 1px solid var(--border);">
         <div class="container">
             <div class="info-grid">
-                <div class="info-card">
+                <div class="card">
                     <h3>The Venue</h3>
-                    <p>The workshop meetings will be held at the <strong><a href="http://www.hlapalma.it/">Hotel La Palma</a></strong>.</p>
-                    <p><strong>Location and map: </strong><a href="https://www.google.com/maps/place/Hotel+la+Palma/@45.8853215,8.5357034,17z/data=!4m11!3m10!1s0x47867588b2ef6003:0xd39cae5e23970397!5m4!1s2026-05-24!2i4!4m1!1i2!8m2!3d45.8853215!4d8.5357034!16s%2Fg%2F1tm8cv_z?entry=ttu&g_ep=EgoyMDI2MDEwNi4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D">Corso Umberto I, 33, 28838 Stresa VB, Italy</a></p>
+                    <p>Meetings held at the <strong><a href="http://www.hlapalma.it/">Hotel La Palma</a></strong>.</p>
+                    <p><small>Corso Umberto I, 33, 28838 Stresa VB, Italy</small></p>
                 </div>
-                <div class="info-card">
+                <div class="card">
                     <h3>Travel</h3>
-                    <p>Stresa is located about 45 minutes from Malpensa Airport (MXP) and 1:15 from Milan Linate (LIN). We recommend taking a taxi or Uber; driving there is straightforward but involves a few hairpin turns that might be challenging for drivers who are not used to them. We will coordinate arrivals to allow attendees to share their rides.</p>
+                    <p>45 mins from Malpensa (MXP). Ridesharing will be coordinated for attendees.</p>
                 </div>
-                <div class="info-card">
+                <div class="card">
                     <h3>Accommodation</h3>
-                    <p>There are many hotels within easy walking distance along the lake, typically within a few blocks of the meeting venue. Since this is a busy time of year in Stresa we recommend looking at consolidators like Expedia. The La Palma and Bristol hotels are modern.</p>
+                    <p>La Palma and Bristol are recommended. Book early via Expedia/direct.</p>
                 </div>
             </div>
         </div>
@@ -322,48 +320,33 @@
 
     <section id="registration">
         <div class="container">
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>How to register</h3>
-                    <p><a href="https://na.eventscloud.com/ereg/newreg.php?eventid=868961&#">Registration site</a></p>
-                </div>
-                <div class="info-card">
-                    <h3>Getting your registration code</h3>                    
-                    <p>Your registration code was included in your email invitation to IWCV26.</p>
-                </div>                
+            <div class="content-box" style="text-align: center; border-left: none; background: var(--primary); color: #fff;">
+                <h2 style="color: #fff; margin-bottom: 10px;">Ready to Join?</h2>
+                <p style="opacity: 0.8; margin-bottom: 30px;">Use the code from your email invitation to secure your spot.</p>
+                <a href="https://na.eventscloud.com/ereg/newreg.php?eventid=868961&#" class="nav-btn" style="padding: 15px 40px; font-size: 1rem;">Register Now</a>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
+    <footer>
         <div class="container">
-            <div class="info-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="info-grid">
                 <div>
-                    <h4>IWCV 2026</h4>                   
+                    <h4>IWCV 2026</h4>
+                    <p>Promoting dialogue in computer vision research.</p>
                 </div>
                 <div>
                     <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">Registration</a></li>
+                    <ul style="list-style: none; padding: 0;">
                         <li><a href="https://www.stresaturismo.it/en/" target="_blank">Explore Stresa</a></li>
                     </ul>
                 </div>
             </div>
-            <hr style="border: 0; border-top: 1px solid #333; margin: 40px 0 20px;">
-            <p style="text-align: center; color: #777;">&copy; 2026 International Workshop on Computer Vision. All Rights Reserved.</p>
+            <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #334155; text-align: center; font-size: 0.8rem;">
+                © 2026 International Workshop on Computer Vision.
+            </div>
         </div>
     </footer>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
